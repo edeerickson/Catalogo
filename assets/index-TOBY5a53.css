@@ -73,3 +73,5 @@
 .acc-grid .camo-card-content>.camo-badge,.acc-grid .camo-card-content>h3,.acc-grid .camo-card-content>p{max-width:calc(100% - 150px)}
 .acc-grid .camo-card h3{font-size:44px}
 @media (max-width:560px){.acc-grid .camo-card-content>h3,.acc-grid .camo-card-content>p{max-width:calc(100% - 118px)}.acc-grid .camo-card h3{font-size:38px}}
+.alicate-packshot{width:132px}
+.alicate-packshot img{transform:none;max-width:100%;max-height:100px}
