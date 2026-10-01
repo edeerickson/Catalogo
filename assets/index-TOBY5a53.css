@@ -43,3 +43,7 @@
 .channel-gate-territory,.territory-demand-map,.price-route-signature,.price-instrument-axis{display:none!important}
 .channel-physical .ean-head,.channel-physical .ean-cell,.channel-physical .ean-label,.channel-physical .ean-source-note{display:none!important}
 .min-order-note{color:#d9622b;white-space:nowrap}
+.marfim-camo{background-position:center 8%;background-size:cover}
+.cup-camo{background-color:#0a3949}
+.cup-packshot img{object-fit:contain}
+.cup-packshot{background:radial-gradient(circle at 50% 48%,#ffffff3d,#ffffff00 62%)}
