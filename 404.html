@@ -30,7 +30,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="assets/index-Jm4JNrqs.js?v=22"></script>
+    <script src="fx-disponibilidade.js?v=1"></script>
+    <script>
+      /* carrega o catálogo depois da lista de disponibilidade (no máximo 2,5 s de espera) */
+      (function(){var feito=false;function vai(){if(feito)return;feito=true;var s=document.createElement('script');s.type='module';s.crossOrigin='anonymous';s.src='assets/index-Jm4JNrqs.js?v=23';document.head.appendChild(s)}
+      function quando(){var D=window.FXDisp;if(D&&D.carregado&&!D.carregado()&&D.pronto){D.pronto.then(vai,vai);setTimeout(vai,2500)}else vai()}
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',quando);else quando()})();
+    </script>
     <link rel="stylesheet" crossorigin href="assets/index-TOBY5a53.css?v=9">
   </head>
   <body>
