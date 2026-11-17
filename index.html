@@ -31,6 +31,8 @@
 <script src="assets/v2/dados.js?v=1"></script>
 <script src="fx-disponibilidade.js?v=2"></script>
 <script src="assets/v2/dados.js?v=2"></script>
+<script src="fx-disponibilidade.js?v=2"></script>
+<script src="assets/v2/dados.js?v=2"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500;700;800;900&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
@@ -259,7 +261,7 @@ html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 110px)}
   <p>Escolha o canal para ver os valores certos da sua operação. Os preços mudam de um canal para o outro.</p>
   <div class="ops">
     <button type="button" class="f" data-c="f"><b>Loja física</b><span>Vitrine e balcão. Compra, venda mínima e lucro.</span><em>Ver valores da loja física →</em></button>
-    <button type="button" class="o" data-c="o"><b>Loja online</b><span>Site e marketplace. Compra, anúncio mínimo, venda sugerida, SKU e EAN.</span><em>Ver valores da loja online →</em></button>
+    <button type="button" class="o" data-c="o"><b>Loja online</b><span>Site e marketplace. Compra, anúncio mínimo, lucro, SKU e EAN.</span><em>Ver valores da loja online →</em></button>
   </div>
   <small>Você pode trocar de canal a qualquer momento pelo botão no topo.</small>
 </div></div>
@@ -341,30 +343,30 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 // preço de um item no canal atual (null = não vendido neste canal)
 function preco(i){
   if(C==='f'){ if(i.fc==null||i.fv==null) return null; return {c:i.fc,v:i.fv,lu:i.fv-i.fc} }
-  const piso=i.fv!=null?i.fv:i.ov; return {c:i.oc,piso,v:i.ov,lu:i.ov-i.oc,semFis:i.fv==null,conf:i.fv!=null&&i.fv>i.ov};
+  if(i.oc==null||i.ov==null) return null; return {c:i.oc,v:i.ov,lu:i.ov-i.oc};
 }
 const doCanal=line=>ITEMS.filter(i=>i.l===line&&ativo(i)&&preco(i));
 function grupos(line,porBitola){
   const g=new Map();
-  doCanal(line).forEach(i=>{const p=preco(i);const k=porBitola?i.b:[i.m,p.c,p.v,p.piso].join('|');
+  doCanal(line).forEach(i=>{const p=preco(i);const k=porBitola?i.b:[i.m,p.c,p.v].join('|');
     if(!g.has(k))g.set(k,{m:i.m,bits:[],lb:i.lb,p});g.get(k).bits.push(i.b)});
   return [...g.values()];
 }
 function head(first){
   return C==='f'
     ?`<tr><th>${first}</th><th class="r">Compra</th><th class="r">Venda<br>mínima</th><th class="r lu">Seu lucro</th></tr>`
-    :`<tr><th>${first}</th><th class="r">Compra</th><th class="r">Anúncio<br>mínimo</th><th class="r">Venda<br>sugerida</th><th class="r lu">Seu lucro</th></tr>`;
+    :`<tr><th>${first}</th><th class="r">Compra</th><th class="r">Anúncio<br>mínimo</th><th class="r lu">Seu lucro</th></tr>`;
 }
 function linhaTab(g,mono,sub){
-  const p=g.p, pct=Math.round(p.lu/p.c*100), n=C==='f'?4:5;
-  const tag=p.semFis&&!p.conf?'<span class="ast">*</span>':'';
+  const p=g.p, pct=Math.round(p.lu/p.c*100), n=4;
+  const tag='';
   const first=mono?`<b>${bit(g.bits[0])}${tag}</b>${g.lb?`<span>${g.lb} lb</span>`:''}`:`<b>${g.m}${tag}</b>`;
   if(sub===undefined&&!mono&&g.bits.length) sub=g.bits.map(bit).join(' · ');
   const sr=sub?`<tr class="sub"><td colspan="${n}">${sub}</td></tr>`:'';
   if(p.conf) return `<tr class="${sub?'hs':''}"><td class="m">${first}</td><td class="r c">${brl(p.c)}</td><td class="rv" colspan="${n-2}"><b>Em revisão</b> · confirme os valores com seu vendedor</td></tr>${sr}`;
   const lu=`<td class="r lu"><b>${brl(p.lu)}</b><small>+${pct}%</small></td>`;
   const row=C==='f'?`<td class="m">${first}</td><td class="r c">${brl(p.c)}</td><td class="r s">${brl(p.v)}</td>${lu}`
-               :`<td class="m">${first}</td><td class="r c">${brl(p.c)}</td><td class="r">${brl(p.piso)}</td><td class="r s">${brl(p.v)}</td>${lu}`;
+               :`<td class="m">${first}</td><td class="r c">${brl(p.c)}</td><td class="r s">${brl(p.v)}</td>${lu}`;
   return `<tr class="${sub?'hs':''}">${row}</tr>${sr}`;
 }
 function codigos(line){
@@ -381,7 +383,6 @@ function bloco(line,cod,titulo,desc,img,mono,cor){
 }
 function notas(lines){
   const its=lines.flatMap(doCanal).map(preco); const n=[];
-  if(C==='o'&&its.some(p=>p.semFis)) n.push('* Sem preço de loja física cadastrado: o anúncio mínimo é a venda sugerida.');
   if(C==='o'&&its.some(p=>p.conf)) n.push('Em revisão: valores sendo atualizados. Peça os preços ao seu vendedor.');
   return n.map(t=>`<p class="nt">${t}</p>`).join('');
 }
@@ -390,11 +391,11 @@ function desde(line){const ps=doCanal(line).map(preco);if(!ps.length)return null
 function render(){
   const tot=ITEMS.filter(i=>ativo(i)&&preco(i)).length;
   document.getElementById('tot').textContent=`${tot} itens à venda`;
-  document.getElementById('visP').textContent=C==='f'?'Valores para vitrine e balcão, com o lucro na venda mínima da loja física.':'Valores para o canal digital, com o lucro na venda sugerida.';
-  document.getElementById('heroP').textContent=C==='f'?'Compra, venda mínima e lucro de cada linha para a sua vitrine e o seu balcão.':'Compra, anúncio mínimo, venda sugerida e códigos SKU e EAN para os seus anúncios.';
+  document.getElementById('visP').textContent=C==='f'?'Valores para vitrine e balcão, com o lucro na venda mínima da loja física.':'Valores para o canal digital, com o lucro no anúncio mínimo.';
+  document.getElementById('heroP').textContent=C==='f'?'Compra, venda mínima e lucro de cada linha para a sua vitrine e o seu balcão.':'Compra, anúncio mínimo, lucro e códigos SKU e EAN para os seus anúncios.';
   document.getElementById('leg').innerHTML=(C==='f'
     ?[['Compra','seu preço de revenda'],['Venda mínima','menor preço ao consumidor'],['Seu lucro','venda mínima − compra',1]]
-    :[['Compra','seu preço B2B'],['Anúncio mínimo','piso do seu anúncio'],['Venda sugerida','preço ao cliente final'],['Seu lucro','venda sugerida − compra',1]])
+    :[['Compra','seu preço B2B'],['Anúncio mínimo','menor preço do seu anúncio'],['Seu lucro','anúncio mínimo − compra',1]])
     .map(([a,b,l])=>`<div class="${l?'lu':''}"><b>${a}</b><span>${b}</span></div>`).join('');
   // visão geral
   const cards=[],cards2=[];
@@ -420,7 +421,7 @@ function render(){
   document.getElementById('agrid').innerHTML=copo+(alicateOk()?ali:'');
   document.getElementById('p4').textContent=C==='f'?'Produção e expedição em 10 dias úteis, direto para a sua loja.':'Produção e expedição em 10 dias úteis. Cadastre os anúncios com os códigos SKU e EAN de cada linha.';
   document.getElementById('polH').textContent=C==='f'?'Venda mínima':'Anúncio mínimo';
-  document.getElementById('polP').textContent=C==='f'?'Os valores de venda mínima protegem a sua margem e a de toda a rede de lojistas. Não venda abaixo deles.':'O anúncio não pode ficar abaixo do anúncio mínimo de cada item, que é o preço de venda da loja física. O termo de compromisso é enviado pelo seu vendedor.';
+  document.getElementById('polP').textContent=C==='f'?'Os valores de venda mínima protegem a sua margem e a de toda a rede de lojistas. Não venda abaixo deles.':'O anúncio não pode ficar abaixo do anúncio mínimo de cada item. Isso protege a sua margem e a de toda a rede de lojistas. O termo de compromisso é enviado pelo seu vendedor.';
   busca();
 }
 // busca

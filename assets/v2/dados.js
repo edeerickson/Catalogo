@@ -2,7 +2,7 @@
    FISHERMANS · DADOS DO CATÁLOGO (fonte única de produtos e preços)
    l = linha · m = metragem · b = bitola · sku / ean / lb = códigos e libras
    fc / fv = loja física: compra / venda mínima      (null = não vendido na loja física)
-   oc / ov = loja online: compra / venda sugerida    (o anúncio mínimo é o fv)
+   oc / ov = loja online: compra / anúncio mínimo
    O que aparece ou some é decidido pelo Painel do atacado (fx-disponibilidade.js).
    "padrao" = o que aparece quando o painel nunca decidiu sobre o item.
    ===================================================================== */
