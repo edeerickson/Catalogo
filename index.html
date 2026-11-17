@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <meta name="description" content="Catálogo comercial interativo FISHERMANS com valor mínimo de venda por canal, linha e SKU." />
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Catálogo comercial interativo FISHERMANS com valor mínimo de venda por canal, linha e SKU." />
     <title>FISHERMANS — Catálogo Interativo para Lojistas</title>
     <link rel="canonical" href="https://edeerickson.github.io/Catalogo/" />
     <meta property="og:locale" content="pt_BR" />
@@ -27,19 +27,425 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=1" />
   <link rel="icon" href="favicon.ico?v=1" sizes="any" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=1" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <script src="fx-disponibilidade.js?v=1"></script>
-    <script>
-      /* carrega o catálogo depois da lista de disponibilidade (no máximo 2,5 s de espera) */
-      (function(){var feito=false;function vai(){if(feito)return;feito=true;var s=document.createElement('script');s.type='module';s.crossOrigin='anonymous';s.src='assets/index-Jm4JNrqs.js?v=25';document.head.appendChild(s)}
-      function quando(){var D=window.FXDisp;if(D&&D.carregado&&!D.carregado()&&D.pronto){D.pronto.then(vai,vai);setTimeout(vai,2500)}else vai()}
-      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',quando);else quando()})();
-    </script>
-    <link rel="stylesheet" crossorigin href="assets/index-TOBY5a53.css?v=9">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<script src="fx-disponibilidade.js?v=2"></script>
+<script src="assets/v2/dados.js?v=1"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500;700;800;900&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f5f7;--surface:#ffffff;--ink:#1a1c2e;--mut:#6b6f80;--line:#dfe1e7;--chip:#eceef2;
+  --navy:#1a1c2e;--navy2:#24273d;--coral:#ff5a36;--green:#1d7a49;--greenbg:#e5f3ea;--th:#1a1c2e;
+  --logo-d:block;--logo-l:none;color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#101220;--surface:#1a1d2e;--ink:#eef0f5;--mut:#a4a8b8;--line:#2c3047;--chip:#252940;--th:#2a2e48;
+  --green:#7fd3a2;--greenbg:#173726;--logo-d:none;--logo-l:block;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#101220;--surface:#1a1d2e;--ink:#eef0f5;--mut:#a4a8b8;--line:#2c3047;--chip:#252940;--th:#2a2e48;
+  --green:#7fd3a2;--greenbg:#173726;--logo-d:none;--logo-l:block;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 Roboto,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--surface)}
+img{display:block;max-width:100%}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+h1,h2,h3,.kick,.cod,th,.cond small,.lg-t b{font-family:"Roboto Condensed","Arial Narrow",Arial,sans-serif;text-transform:uppercase;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.kick{display:block;color:var(--coral);font-weight:800;letter-spacing:1.1px;font-size:13px}
+
+/* topo */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--surface);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;height:58px}
+.top .ld{display:var(--logo-d);height:20px;width:auto}.top .ll{display:var(--logo-l);height:20px;width:auto}
+.seg{display:flex;background:var(--chip);border-radius:999px;padding:3px}
+.seg button{border:0;background:transparent;border-radius:999px;padding:8px 13px;font:700 12.5px/1 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase;color:var(--mut);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--navy);color:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .seg button[aria-pressed="true"]{background:var(--coral)}}
+:root[data-theme="dark"] .seg button[aria-pressed="true"]{background:var(--coral)}
+
+/* capa */
+.hero{position:relative;color:#fff;background:var(--navy);overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,28,46,.35) 0%,rgba(26,28,46,.55) 45%,rgba(26,28,46,.96) 100%)}
+.hero .wrap{position:relative;z-index:1;padding-top:96px;padding-bottom:26px}
+.hero h1{font-size:clamp(44px,12vw,92px);font-weight:900;line-height:.9;margin-top:10px}
+.hero p{font-size:16.5px;color:#dfe1e8;margin:14px 0 0;max-width:42ch}
+.cond{display:grid;grid-template-columns:repeat(3,1fr);margin-top:22px;border-top:1px solid #4a4d63}
+.cond div{padding:12px 0 2px}
+.cond small{display:block;font-weight:700;font-size:11px;letter-spacing:.8px;color:var(--coral)}
+.cond b{display:block;font:800 17px/1.15 "Roboto Condensed",Arial,sans-serif;margin-top:3px}
+
+/* busca */
+.busca{background:var(--surface);border-bottom:1px solid var(--line)}
+.busca .wrap{padding-top:14px;padding-bottom:14px}
+.busca label{position:relative;display:block}
+.busca svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--mut)}
+.busca input{width:100%;border:1.5px solid var(--line);background:var(--bg);border-radius:10px;padding:13px 14px 13px 42px;font-size:15.5px}
+.busca input:focus{outline:none;border-color:var(--coral)}
+
+/* seções */
+.sec{padding:30px 0 6px}
+.sh{margin-bottom:16px}
+.sh h2{font-size:clamp(30px,7vw,44px);font-weight:900;line-height:1;margin-top:6px}
+.sh p{color:var(--mut);margin:8px 0 0;max-width:56ch}
+
+/* visão geral */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.rc{background:var(--surface);border:1px solid var(--line);border-radius:10px;display:flex;align-items:center;gap:12px;padding:10px 14px 10px 10px;text-decoration:none;color:inherit}
+.rc:hover{border-color:var(--coral)}
+.rc .pi{width:56px;height:56px;flex:0 0 56px;background:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center}
+.rc .pi img{max-width:92%;max-height:92%;object-fit:contain}
+.rc .rn{flex:1;min-width:0}
+.rc .rn span{display:block;font:700 11px/1.2 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase;letter-spacing:.5px;color:var(--mut)}
+.rc .rn b{display:block;font:900 23px/1 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase}
+.rc .rn small{font-size:12px;color:var(--mut)}
+.rc .rp{text-align:right}
+.rc .rp small{display:block;font-size:11px;color:var(--mut)}
+.rc .rp b{font:800 19px/1.1 "Roboto Condensed",Arial,sans-serif}
+.lu-tag{display:inline-block;margin-top:4px;font:800 11.5px/1 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase;color:var(--green);background:var(--greenbg);padding:4px 6px;border-radius:4px}
+.leg{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:16px}
+.leg div{border-top:3px solid var(--ink);padding-top:7px}
+.leg div.lu{border-top-color:var(--green)}
+.leg b{display:block;font:800 13.5px/1.15 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase}
+.leg span{font-size:12.5px;color:var(--mut)}
+
+/* família */
+.fh{position:relative;color:#fff;background:var(--navy);border-radius:12px;overflow:hidden}
+.fh img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fh::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,28,46,.95) 0%,rgba(26,28,46,.8) 55%,rgba(26,28,46,.4) 100%)}
+.fh div{position:relative;z-index:1;padding:26px 20px 24px}
+.fh h2{font-size:clamp(36px,9vw,54px);font-weight:900;line-height:1;margin-top:6px}
+.fh p{margin:8px 0 0;color:#dcdee6;max-width:52ch}
+.lines{display:grid;gap:18px;margin-top:18px}
+@media (min-width:900px){.lines.two{grid-template-columns:1fr 1fr;align-items:start}}
+.blk{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.bh{display:flex;gap:14px;align-items:center;padding:14px 14px 12px}
+.bh .pi{width:78px;height:66px;flex:0 0 78px;background:#fff;border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.bh .pi img{max-width:94%;max-height:94%;object-fit:contain}
+.cod{display:inline-block;background:var(--coral);color:#fff;font-weight:800;font-size:11.5px;padding:3px 7px;border-radius:3px;letter-spacing:.6px}
+.bh h3{font-size:24px;font-weight:900;line-height:1.05;margin-top:4px}
+.bh p{margin:2px 0 0;font-size:13.5px;color:var(--mut)}
+.mb .bh{border-left:6px solid var(--mc)}
+
+/* tabela */
+.tw{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:14px}
+.t th{background:var(--th);color:#fff;font-weight:700;font-size:11px;letter-spacing:.5px;text-align:left;padding:8px 9px;line-height:1.15;vertical-align:bottom}
+.mb .t th{background:var(--mc)}
+.t th.lu{background:var(--green)!important}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .t th.lu{background:#1d7a49!important}}
+:root[data-theme="dark"] .t th.lu{background:#1d7a49!important}
+.t td{padding:9px 9px;border-top:1px solid var(--line);vertical-align:middle}
+.t .r{text-align:right;white-space:nowrap}
+.t td.m b{display:block;font:800 16px/1.1 "Roboto Condensed",Arial,sans-serif;white-space:nowrap}
+.t td.m span{display:block;font-size:12.5px;color:var(--mut);margin-top:2px;line-height:1.35}
+.t td.c{font:800 16.5px/1 "Roboto Condensed",Arial,sans-serif}
+.t td.s{font-weight:700}
+.t td.lu{background:var(--greenbg);color:var(--green)}
+.t td.lu b{display:block;font:800 16.5px/1 "Roboto Condensed",Arial,sans-serif}
+.t td.lu small{font:800 11.5px/1 "Roboto Condensed",Arial,sans-serif}
+.t td.rv{text-align:center;color:var(--ink);background:var(--chip);font-size:13px;white-space:normal}
+.tag{display:inline-block;margin-left:5px;font:800 10.5px/1 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase;letter-spacing:.4px;color:var(--ink);background:var(--chip);border:1px solid var(--line);padding:3px 5px;border-radius:3px;vertical-align:1px}
+.ast{color:var(--coral);font-weight:800;margin-left:3px}
+@media (max-width:520px){.t{font-size:13px}.t th,.t td{padding-left:6px;padding-right:6px}.t td.c,.t td.lu b{font-size:15px}.t td.m b{font-size:15px}}
+
+/* códigos */
+details.cods{border-top:1px solid var(--line)}
+details.cods summary{cursor:pointer;list-style:none;padding:12px 14px;font:700 13px/1 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase;letter-spacing:.5px;display:flex;justify-content:space-between;align-items:center}
+details.cods summary::-webkit-details-marker{display:none}
+details.cods summary::after{content:"+";font-size:19px;color:var(--coral)}
+details.cods[open] summary::after{content:"–"}
+table.cd{width:100%;border-collapse:collapse;font-size:12.5px}
+.cd th{background:var(--chip);color:var(--ink);text-align:left;padding:6px 9px;font-size:10.5px;letter-spacing:.4px}
+.cd td{padding:6px 9px;border-top:1px solid var(--line);white-space:nowrap}
+.cd .mono{font-family:"Roboto Mono",Consolas,monospace;font-size:12px}
+.t tr.hs td{padding-bottom:3px}.t tr.sub td{border-top:0;padding-top:0;padding-bottom:9px;font-size:12.5px;color:var(--mut);line-height:1.4}.t tr.sub .mono{font-family:"Roboto Mono",Consolas,monospace;font-size:11.5px}
+.t td.lu{vertical-align:middle}.t tr.hs td.lu{border-bottom:0}
+@media (max-width:420px){.t th,.t td{padding-left:5px;padding-right:5px}.t{font-size:12.5px}.t td.c,.t td.lu b{font-size:14.5px}.t th{font-size:10px}}
+.t td.m b{white-space:normal}.tag{display:block;width:max-content;margin:4px 0 0}
+@media (max-width:420px){.cd td,.cd th{padding:5px 5px}.cd{font-size:11.5px}.cd .mono{font-size:10.5px}}
+.nt{font-size:12.5px;color:var(--mut);margin:10px 2px 0}
+
+/* acessórios */
+.agrid{display:grid;gap:16px}
+@media (min-width:800px){.agrid{grid-template-columns:1fr 1fr}}
+.ai{background:#f4f5f7;height:170px;display:flex;align-items:center;justify-content:center}
+.ai img{max-height:88%;max-width:70%;object-fit:contain}
+
+/* pedido */
+.pedido{background:var(--navy);color:#fff;margin-top:34px;padding:34px 0 40px}
+.pedido .sh h2{color:#fff}
+.pgrid{display:grid;gap:18px}
+@media (min-width:860px){.pgrid{grid-template-columns:1.3fr 1fr;align-items:start}}
+.pss{display:grid;gap:10px}
+@media (min-width:600px){.pss{grid-template-columns:1fr 1fr}}
+.ps{display:flex;gap:14px;background:var(--navy2);border-radius:10px;padding:15px 16px}
+.ps > b{flex:0 0 36px;height:36px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;font:900 19px/1 "Roboto Condensed",Arial,sans-serif}
+.ps h3{font-size:18px;font-weight:800}
+.ps p{margin:3px 0 0;font-size:14px;color:#cfd2dc}
+.pol{border:2px solid var(--coral);border-radius:12px;padding:18px}
+.pol h3{font-size:26px;font-weight:900;margin:6px 0 6px}
+.pol p{margin:6px 0 0;font-size:14.5px;color:#dcdee6}
+.foot{padding:18px 0 30px;background:var(--navy);color:#aeb1c0;font-size:12.5px;border-top:1px solid #33364d}
+.foot .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+.foot img{height:16px;width:auto}
+
+/* cards de mesma altura */
+.lines{align-items:stretch!important}
+.blk{display:flex;flex-direction:column}
+.blk > details.cods{margin-top:auto}
+/* cabeçalho de família: azul-marinho + embalagens + faixa da família */
+.fh{display:flex;align-items:stretch;border-top:5px solid var(--fc)}
+.fh::after{content:none}
+.fh div.ft{flex:1;padding:24px 20px 22px}
+.fh .packs{display:flex;gap:10px;align-items:center;padding:16px 18px 16px 0}
+.fh .packs span{width:96px;height:96px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.fh .packs img{position:static;width:90%;height:90%;object-fit:contain}
+@media (max-width:620px){.fh{flex-direction:column}.fh .packs{padding:0 20px 20px}.fh .packs span{width:76px;height:76px}}
+/* divisores multi / mono */
+.div{margin-top:36px;padding:22px 0 4px;border-top:3px solid var(--ink);display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap}
+.div h2{font-size:clamp(34px,8vw,56px);font-weight:900;line-height:.95}
+.div p{margin:6px 0 0;color:var(--mut);max-width:48ch}
+.div .n{font:900 15px/1 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase;background:var(--ink);color:var(--bg);padding:7px 10px;border-radius:4px}
+.grp{margin-top:18px}
+.grp > h3{font-size:16px;font-weight:800;letter-spacing:.6px;margin:0 0 10px;display:flex;align-items:center;gap:10px}
+.grp > h3::after{content:"";flex:1;height:1px;background:var(--line)}
+.nav{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.nav a{background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:12px 8px;text-decoration:none;color:var(--ink);font:800 15px/1.1 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase;text-align:center}
+.nav a small{display:block;font:500 11.5px/1.2 Roboto,Arial,sans-serif;text-transform:none;color:var(--mut);margin-top:3px}
+.nav a:hover{border-color:var(--coral)}
+@media (max-width:420px){.nav a{font-size:13px;padding:11px 4px;letter-spacing:0}.nav a small{font-size:10.5px}}
+/* canal sempre visível */
+.canal{position:sticky;top:calc(env(safe-area-inset-top,0px) + 58px);z-index:29;color:#fff}
+.canal .wrap{display:flex;justify-content:space-between;align-items:center;gap:10px;height:40px;font:700 13.5px/1 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase;letter-spacing:.5px}
+.canal b{font-weight:900}
+.canal button{border:1.5px solid #fff;background:transparent;color:#fff;border-radius:999px;padding:6px 12px;font:800 12px/1 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase;cursor:pointer}
+.canal.f{background:#2f6fb3}.canal.o{background:#d9480f}
+.top .seg{display:none}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 110px)}
+/* pergunta inicial */
+.gate{position:fixed;inset:0;z-index:60;background:var(--navy);color:#fff;overflow:auto;display:flex;align-items:center;justify-content:center;padding:calc(env(safe-area-inset-top,0px) + 24px) 18px calc(env(safe-area-inset-bottom,0px) + 24px)}
+.gate[hidden]{display:none}
+.gate .in{width:100%;max-width:640px}
+.gate img.lg{height:24px;width:auto;margin-bottom:28px}
+.gate h1{font-size:clamp(38px,10vw,64px);font-weight:900;line-height:.95;margin-top:6px}
+.gate .in > p{color:#cfd2dc;margin:12px 0 22px;font-size:16px}
+.gate .ops{display:grid;gap:12px}
+@media (min-width:560px){.gate .ops{grid-template-columns:1fr 1fr}}
+.gate .ops button{text-align:left;border:0;border-radius:14px;padding:20px 18px;cursor:pointer;color:#fff;display:flex;flex-direction:column;gap:6px;border-top:6px solid}
+.gate .ops button.f{background:#24314f;border-top-color:#2f6fb3}.gate .ops button.o{background:#3a2a2c;border-top-color:#d9480f}
+.gate .ops button:hover{filter:brightness(1.15)}
+.gate .ops button b{font:900 28px/1 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase}
+.gate .ops button span{font-size:14px;color:#dcdee6}
+.gate .ops button em{font:800 12px/1 "Roboto Condensed",Arial,sans-serif;font-style:normal;text-transform:uppercase;letter-spacing:.6px;margin-top:6px}
+.gate .ops button.f em{color:#8fc1f2}.gate .ops button.o em{color:#ffa07a}
+.gate small{display:block;margin-top:16px;color:#9a9eb0;font-size:12.5px}
+
+/* busca: resultados */
+#res .blk{margin-bottom:10px}
+.empty{color:var(--mut);padding:20px 4px}
+.hidden{display:none!important}
+.preview{margin:22px 0 0;padding:12px 14px;border:1px dashed var(--line);border-radius:10px;color:var(--mut);font-size:13px}
+</style>
+</head>
+<body>
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateT" hidden><div class="in">
+  <img class="lg" src="assets/v2/logo-branco.png" alt="Fishermans">
+  <span class="kick">Catálogo de revenda</span>
+  <h1 id="gateT">Como a sua loja vende?</h1>
+  <p>Escolha o canal para ver os valores certos da sua operação. Os preços mudam de um canal para o outro.</p>
+  <div class="ops">
+    <button type="button" class="f" data-c="f"><b>Loja física</b><span>Vitrine e balcão. Compra, venda mínima e lucro.</span><em>Ver valores da loja física →</em></button>
+    <button type="button" class="o" data-c="o"><b>Loja online</b><span>Site e marketplace. Compra, anúncio mínimo, venda sugerida, SKU e EAN.</span><em>Ver valores da loja online →</em></button>
+  </div>
+  <small>Você pode trocar de canal a qualquer momento pelo botão no topo.</small>
+</div></div>
+<header class="top"><div class="wrap">
+  <div><img class="ld" src="assets/v2/logo-navy.png" alt="Fishermans"><img class="ll" src="assets/v2/logo-branco.png" alt="Fishermans"></div>
+  <div class="seg" role="group" aria-label="Canal de venda">
+    <button type="button" data-c="f" aria-pressed="true">Loja física</button>
+    <button type="button" data-c="o" aria-pressed="false">Loja online</button>
+  </div>
+</div></header>
+<div class="canal f" id="canal"><div class="wrap"><span>Valores da <b id="canalN">loja física</b></span><button type="button" id="trocar">Trocar canal</button></div></div>
+
+<section class="hero"><img src="assets/v2/capa.jpg" alt="Pescadores num barco em rio de água escura">
+  <div class="wrap">
+    <span class="kick">Linhas de pesca Fishermans</span>
+    <h1>Catálogo<br>de revenda</h1>
+    <p id="heroP"></p>
+    <div class="cond"><div><small>Pedido mínimo</small><b>R$ 2.500</b></div><div><small>Pagamento</small><b>Pix ou 3x sem juros</b></div><div><small>Produção</small><b>10 dias úteis</b></div></div>
+  </div>
+</section>
+
+<div class="busca"><div class="wrap"><label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+  <input id="q" type="search" placeholder="Busque por bitola (0,30), libras (40), SKU ou EAN" aria-label="Buscar produto" autocomplete="off"></label></div></div>
+
+<main class="wrap">
+  <section id="res" class="sec hidden" aria-live="polite"></section>
+  <div id="todo">
+    <section class="sec" id="visao">
+      <div class="sh"><span class="kick">Visão geral</span><h2 id="tot"></h2><p id="visP"></p></div>
+      <div class="nav"><a href="#multi">Multifilamentos<small>4X · 8X · 16X</small></a><a href="#mono">Monofilamentos<small>Série X1 · 300m</small></a><a href="#acess">Acessórios<small>Copo · Alicate</small></a></div>
+      <div class="grp"><h3>Multifilamentos</h3><div class="rgrid" id="rgrid"></div></div>
+      <div class="grp"><h3>Monofilamentos</h3><div class="rgrid" id="rgrid2"></div></div>
+      <div class="leg" id="leg"></div>
+    </section>
+    <div id="fams"></div>
+    <section class="sec" id="acess"><div class="sh"><span class="kick">Para completar o pedido</span><h2>Acessórios</h2><p>Venda a partir de 10 unidades por item.</p></div><div class="agrid" id="agrid"></div></section>
+  </div>
+</main>
+
+<section class="pedido"><div class="wrap">
+  <div class="sh"><span class="kick">Como fazer seu pedido</span><h2>Do pedido à vitrine</h2></div>
+  <div class="pgrid">
+    <div class="pss">
+      <div class="ps"><b>1</b><div><h3>Monte o pedido</h3><p>Escolha linhas, metragens e bitolas. Pedido mínimo de R$ 2.500,00.</p></div></div>
+      <div class="ps"><b>2</b><div><h3>Envie ao seu vendedor</h3><p>Mande a lista de itens para o seu vendedor Fishermans.</p></div></div>
+      <div class="ps"><b>3</b><div><h3>Pague como preferir</h3><p>Pix ou 3x sem juros.</p></div></div>
+      <div class="ps"><b>4</b><div><h3>Receba e venda</h3><p id="p4"></p></div></div>
+    </div>
+    <div class="pol"><span class="kick">Política de preços</span><h3 id="polH"></h3><p id="polP"></p></div>
+  </div>
+</div></section>
+<footer class="foot"><div class="wrap"><img src="assets/v2/logo-branco.png" alt="Fishermans"><span>Feita por pescador. Testada no rio.</span><span>fishermans.com.br</span></div></footer>
+
+<script>
+const ITEMS=window.FX_CAT.itens, PADRAO=new Set(window.FX_CAT.padrao), IMG={"amazonica-4x": "assets/v2/amazonica-4x.jpg", "amazonica-8x": "assets/v2/amazonica-8x.jpg", "oceanica-4x": "assets/v2/oceanica-4x.jpg", "oceanica-8x": "assets/v2/oceanica-8x.jpg", "marfim-16x": "assets/v2/marfim-16x.jpg", "n40": "assets/v2/n40.jpg", "s50": "assets/v2/s50.jpg", "c97": "assets/v2/c97.jpg", "n90": "assets/v2/n90.jpg", "w98": "assets/v2/w98.jpg", "copo": "assets/v2/copo.jpg", "alicate": "assets/v2/alicate.jpg"};
+// disponibilidade: o que o Painel do atacado decidiu; se ele nunca decidiu, vale a lista padrão
+function ativo(i){const F=window.FXDisp;let e=null;if(F&&F.carregado&&F.carregado()){e=F.estado(i.sku);if(e===null&&i.skuCat&&i.skuCat!==i.sku)e=F.estado(i.skuCat)}
+  return e===null?PADRAO.has(i.skuCat+'|'+i.m+'|'+i.l):e}
+const alicateOk=()=>{const F=window.FXDisp;return !F||F.familiaDisponivel('alicate')};
+const FCOR={ama:'#c8742b',oce:'#2a8fd6',mar:'#d9d4c4'};
+const FAM=[
+ {id:'ama',nome:'Amazônica',sub:'Multifilamento camuflado · águas escuras',img:'ama',desc:'Camuflada para rios, lagos e represas: água escura, galhada, pedra e predadores de água doce.',
+  linhas:[['Amazônica X4','4X','Estrutura: mais rigidez e resistência à abrasão para enroscos.','amazonica-4x'],['Amazônica X8','8X','Arremesso: mais lisa e macia, lançamentos longos e sensibilidade.','amazonica-8x']]},
+ {id:'oce',nome:'Oceânica',sub:'Multifilamento camuflado · águas claras',img:'oce',desc:'Camuflada para alto-mar, costa e rios de águas claras: resistência ao sol, à água salgada e aos grandes combates.',
+  linhas:[['Oceânica X4','4X','Profundidade: estrutura firme para encostas e trabalho em profundidade.','oceanica-4x'],['Oceânica X8','8X','Fluidez: fios ultrafinos para arremesso longo e recolhimento silencioso.','oceanica-8x']]},
+ {id:'mar',nome:'Marfim 16X',sub:'Multifilamento de alta performance',img:'mar',desc:'16 fios de PE num trançado compacto e superfície lisa: arremessos longos e silenciosos, zero memória e revestimento hidrofóbico.',
+  linhas:[['Marfim X16','16X','Para o pescador que quer o topo da linha.','marfim-16x']]}];
+const MONO=[['Mono N40','N40 Nylon','Para o dia a dia: custo-benefício, durabilidade e confiança.','n40','#7c818a'],
+ ['Mono S50','S50 Soft','Ultramacia: absorve trancos fortes e tem baixa memória.','s50','#7a52b3'],
+ ['Mono C97','C97 Carbon Coat','Revestida de fluorcarbono: discreta e resistente à abrasão.','c97','#4b4f57'],
+ ['Mono N90','N90 Nylon','Baixíssima elasticidade: resposta imediata na fisgada.','n90','#a51d2d'],
+ ['Mono W98','W98 Tungstênio','Blindada com tungstênio e carbono: pescaria bruta.','w98','#b8901f']];
+let C='f';
+const brl=v=>'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const bit=b=>b.replace('.',',');
+const nomeLinha=l=>l.replace(' X4',' 4X').replace(' X8',' 8X').replace(' X16',' 16X').replace('Mono ','');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// preço de um item no canal atual (null = não vendido neste canal)
+function preco(i){
+  if(C==='f'){ if(i.fc==null||i.fv==null) return null; return {c:i.fc,v:i.fv,lu:i.fv-i.fc} }
+  const piso=i.fv!=null?i.fv:i.ov; return {c:i.oc,piso,v:i.ov,lu:i.ov-i.oc,semFis:i.fv==null,conf:i.fv!=null&&i.fv>i.ov};
+}
+const doCanal=line=>ITEMS.filter(i=>i.l===line&&ativo(i)&&preco(i));
+function grupos(line,porBitola){
+  const g=new Map();
+  doCanal(line).forEach(i=>{const p=preco(i);const k=porBitola?i.b:[i.m,p.c,p.v,p.piso].join('|');
+    if(!g.has(k))g.set(k,{m:i.m,bits:[],lb:i.lb,p});g.get(k).bits.push(i.b)});
+  return [...g.values()];
+}
+function head(first){
+  return C==='f'
+    ?`<tr><th>${first}</th><th class="r">Compra</th><th class="r">Venda<br>mínima</th><th class="r lu">Seu lucro</th></tr>`
+    :`<tr><th>${first}</th><th class="r">Compra</th><th class="r">Anúncio<br>mínimo</th><th class="r">Venda<br>sugerida</th><th class="r lu">Seu lucro</th></tr>`;
+}
+function linhaTab(g,mono,sub){
+  const p=g.p, pct=Math.round(p.lu/p.c*100), n=C==='f'?4:5;
+  const tag=p.semFis&&!p.conf?'<span class="ast">*</span>':'';
+  const first=mono?`<b>${bit(g.bits[0])}${tag}</b>${g.lb?`<span>${g.lb} lb</span>`:''}`:`<b>${g.m}${tag}</b>`;
+  if(sub===undefined&&!mono&&g.bits.length) sub=g.bits.map(bit).join(' · ');
+  const sr=sub?`<tr class="sub"><td colspan="${n}">${sub}</td></tr>`:'';
+  if(p.conf) return `<tr class="${sub?'hs':''}"><td class="m">${first}</td><td class="r c">${brl(p.c)}</td><td class="rv" colspan="${n-2}"><b>Em revisão</b> · confirme os valores com seu vendedor</td></tr>${sr}`;
+  const lu=`<td class="r lu"><b>${brl(p.lu)}</b><small>+${pct}%</small></td>`;
+  const row=C==='f'?`<td class="m">${first}</td><td class="r c">${brl(p.c)}</td><td class="r s">${brl(p.v)}</td>${lu}`
+               :`<td class="m">${first}</td><td class="r c">${brl(p.c)}</td><td class="r">${brl(p.piso)}</td><td class="r s">${brl(p.v)}</td>${lu}`;
+  return `<tr class="${sub?'hs':''}">${row}</tr>${sr}`;
+}
+function codigos(line){
+  const its=doCanal(line); if(!its.length) return '';
+  return `<details class="cods"><summary>Códigos para cadastro · SKU e EAN</summary><div class="tw"><table class="cd"><thead><tr><th>Metr.</th><th>Bitola</th><th>lb</th><th>SKU</th><th>EAN</th></tr></thead><tbody>${
+    its.map(i=>`<tr><td>${i.m}</td><td>${bit(i.b)}</td><td>${i.lb||'—'}</td><td class="mono">${esc(i.sku||'—')}</td><td class="mono">${esc(i.ean||'—')}</td></tr>`).join('')}</tbody></table></div></details>`;
+}
+function bloco(line,cod,titulo,desc,img,mono,cor){
+  const gs=grupos(line,mono); if(!gs.length) return '';
+  return `<article class="blk${mono?' mb':''}" ${cor?`style="--mc:${cor}"`:''} id="l-${line.replace(/\W+/g,'')}">
+    <div class="bh"><div class="pi"><img src="${IMG[img]}" alt="Embalagem ${esc(titulo)}"></div><div>${cod?`<span class="cod">${cod}</span>`:''}<h3>${esc(titulo)}</h3><p>${esc(desc)}</p></div></div>
+    <div class="tw"><table class="t"><thead>${head(mono?'Bitola (mm)':'Metragem')}</thead><tbody>${gs.map(g=>linhaTab(g,mono)).join('')}</tbody></table></div>
+    ${codigos(line)}</article>`;
+}
+function notas(lines){
+  const its=lines.flatMap(doCanal).map(preco); const n=[];
+  if(C==='o'&&its.some(p=>p.semFis)) n.push('* Sem preço de loja física cadastrado: o anúncio mínimo é a venda sugerida.');
+  if(C==='o'&&its.some(p=>p.conf)) n.push('Em revisão: valores sendo atualizados. Peça os preços ao seu vendedor.');
+  return n.map(t=>`<p class="nt">${t}</p>`).join('');
+}
+function desde(line){const ps=doCanal(line).map(preco);if(!ps.length)return null;const ok=ps.filter(p=>!p.conf);return {c:Math.min(...ps.map(p=>p.c)),pct:Math.max(...ok.map(p=>Math.round(p.lu/p.c*100)))}}
+
+function render(){
+  const tot=ITEMS.filter(i=>ativo(i)&&preco(i)).length;
+  document.getElementById('tot').textContent=`${tot} itens à venda`;
+  document.getElementById('visP').textContent=C==='f'?'Valores para vitrine e balcão, com o lucro na venda mínima da loja física.':'Valores para o canal digital, com o lucro na venda sugerida.';
+  document.getElementById('heroP').textContent=C==='f'?'Compra, venda mínima e lucro de cada linha para a sua vitrine e o seu balcão.':'Compra, anúncio mínimo, venda sugerida e códigos SKU e EAN para os seus anúncios.';
+  document.getElementById('leg').innerHTML=(C==='f'
+    ?[['Compra','seu preço de revenda'],['Venda mínima','menor preço ao consumidor'],['Seu lucro','venda mínima − compra',1]]
+    :[['Compra','seu preço B2B'],['Anúncio mínimo','piso do seu anúncio'],['Venda sugerida','preço ao cliente final'],['Seu lucro','venda sugerida − compra',1]])
+    .map(([a,b,l])=>`<div class="${l?'lu':''}"><b>${a}</b><span>${b}</span></div>`).join('');
+  // visão geral
+  const cards=[],cards2=[];
+  FAM.forEach(f=>f.linhas.forEach(([l,cod,,img])=>{const d=desde(l);if(d)cards.push([l,f.nome.replace(' 16X',''),cod,img,doCanal(l).length+' itens',d])}));
+  MONO.forEach(([l,n,,img])=>{const d=desde(l);const k=doCanal(l).length;if(d)cards2.push([l,'Monofilamento',n.split(' ')[0],img,k+(k==1?' bitola':' bitolas'),d])});
+  const card=cs=>cs.map(([l,fam,cod,img,qt,d])=>`<a class="rc" href="#l-${l.replace(/\W+/g,'')}"><div class="pi"><img src="${IMG[img]}" alt=""></div><div class="rn"><span>${fam}</span><b>${cod}</b><small>${qt}</small></div><div class="rp"><small>Compra desde</small><b>${brl(d.c)}</b><span class="lu-tag">lucro até +${d.pct}%</span></div></a>`).join('');
+  document.getElementById('rgrid').innerHTML=card(cards); document.getElementById('rgrid2').innerHTML=card(cards2);
+  // famílias
+  let h=`<div class="div" id="multi"><div><span class="kick">Trançados de PE · 4, 8 e 16 fios</span><h2>Multifilamentos</h2><p>Amazônica e Oceânica camufladas, em 4X e 8X, e a Marfim 16X de alta performance.</p></div><span class="n">${['Amazônica X4','Amazônica X8','Oceânica X4','Oceânica X8','Marfim X16'].reduce((a,l)=>a+doCanal(l).length,0)} itens</span></div>`;
+  FAM.forEach(f=>{const bl=f.linhas.map(([l,cod,desc,img])=>bloco(l,cod,`${f.nome.replace(' 16X','')} ${cod}`,desc,img)).filter(Boolean);
+    if(!bl.length)return;
+    h+=`<section class="sec" id="f-${f.id}"><div class="fh" style="--fc:${FCOR[f.id]}"><div class="ft"><span class="kick">${f.sub}</span><h2>${f.nome}</h2><p>${f.desc}</p></div><div class="packs">${f.linhas.map(x=>`<span><img src="${IMG[x[3]]}" alt=""></span>`).join('')}</div></div>
+      <div class="lines${bl.length>1?' two':''}">${bl.join('')}</div>${notas(f.linhas.map(x=>x[0]))}</section>`});
+  const mb=MONO.map(([l,n,d,img,cor])=>bloco(l,'',n,d,img,true,cor)).filter(Boolean);
+  if(mb.length) h+=`<div class="div" id="mono"><div><span class="kick">Monofilamento Premium X1 · carretel de 300m</span><h2>Monofilamentos</h2><p>Cinco linhas, cada uma com a cor própria na embalagem para facilitar a exposição e a escolha no balcão.</p></div><span class="n">${MONO.reduce((a,m)=>a+doCanal(m[0]).length,0)} itens</span></div><section class="sec" id="f-mono"><div class="lines two">${mb.join('')}</div>${notas(MONO.map(x=>x[0]))}</section>`;
+  document.getElementById('fams').innerHTML=h;
+  // acessórios
+  const cp=ITEMS.filter(i=>i.l==='Copo Fishermans'&&ativo(i)&&preco(i));
+  const copo=cp.length?`<article class="blk"><div class="ai"><img src="${IMG.copo}" alt="Copo Fishermans"></div><div class="bh"><div><span class="cod">SmartGrip · antiqueda</span><h3>Copo Fishermans</h3><p>Copo térmico em aço inox, com isolamento a vácuo e base que gruda no barco.</p></div></div>
+    <div class="tw"><table class="t"><thead>${head('Quantidade')}</thead><tbody>${cp.map(i=>linhaTab({m:i.m,bits:[],p:preco(i)},false,'')).join('')}</tbody></table></div></article>`:'';
+  const ali=`<article class="blk"><div class="ai"><img src="${IMG.alicate}" alt="Alicate Fishermans"></div><div class="bh"><div><span class="cod">Inox · multifuncional</span><h3>Alicate Fishermans</h3><p>Corta multi e monofilamento, abre argolas e remove anzóis com uma mão só.</p></div></div>
+    <div class="tw"><table class="t"><thead><tr><th>Quantidade</th><th class="r">Compra</th><th class="r">Venda</th></tr></thead><tbody><tr><td class="m"><b>10 un</b></td><td class="r c">R$ 59,90</td><td class="rv">Preço de venda com seu vendedor</td></tr></tbody></table></div></article>`;
+  document.getElementById('agrid').innerHTML=copo+(alicateOk()?ali:'');
+  document.getElementById('p4').textContent=C==='f'?'Produção e expedição em 10 dias úteis, direto para a sua loja.':'Produção e expedição em 10 dias úteis. Cadastre os anúncios com os códigos SKU e EAN de cada linha.';
+  document.getElementById('polH').textContent=C==='f'?'Venda mínima':'Anúncio mínimo';
+  document.getElementById('polP').textContent=C==='f'?'Os valores de venda mínima protegem a sua margem e a de toda a rede de lojistas. Não venda abaixo deles.':'O anúncio não pode ficar abaixo do anúncio mínimo de cada item, que é o preço de venda da loja física. O termo de compromisso é enviado pelo seu vendedor.';
+  busca();
+}
+// busca
+function norm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(',', '.')}
+function busca(){
+  const q=norm(document.getElementById('q').value.trim()), res=document.getElementById('res'), todo=document.getElementById('todo');
+  if(!q){res.classList.add('hidden');todo.classList.remove('hidden');return}
+  const hits=ITEMS.filter(i=>ativo(i)&&preco(i)&&[i.l,nomeLinha(i.l),i.b,i.m,i.sku,i.ean,i.lb&&i.lb+'lb',i.lb].some(v=>v&&norm(v).includes(q.replace(/\s+/g,''))||(v&&norm(v).includes(q))));
+  todo.classList.add('hidden');res.classList.remove('hidden');
+  if(!hits.length){res.innerHTML=`<p class="empty">Nada encontrado para “${esc(document.getElementById('q').value)}”.</p>`;return}
+  res.innerHTML=`<div class="sh"><span class="kick">Busca</span><h2>${hits.length} ${hits.length==1?'resultado':'resultados'}</h2></div>`+
+    `<div class="blk"><div class="tw"><table class="t"><thead>${head('Item')}</thead><tbody>${hits.slice(0,80).map(i=>linhaTab({m:`${nomeLinha(i.l)} · ${bit(i.b)}`,bits:[i.b],p:preco(i)},false,`${i.m}${i.lb?' · '+i.lb+' lb':''} · SKU <span class="mono">${esc(i.sku||'—')}</span> · EAN <span class="mono">${esc(i.ean||'—')}</span>`)).join('')}</tbody></table></div></div>`;
+}
+document.getElementById('q').addEventListener('input',busca);
+function escolher(c){
+  C=c; document.getElementById('gate').hidden=true; document.body.style.overflow='';
+  document.getElementById('canal').className='canal '+c; document.getElementById('canalN').textContent=c==='f'?'loja física':'loja online';
+  try{history.replaceState(null,'','#'+(c==='f'?'fisica':'online'))}catch(e){}
+  render(); window.scrollTo(0,0);
+}
+function perguntar(){document.getElementById('gate').hidden=false;document.body.style.overflow='hidden';document.querySelector('.gate .ops button').focus()}
+document.querySelectorAll('.gate .ops button').forEach(b=>b.addEventListener('click',()=>escolher(b.dataset.c)));
+document.getElementById('trocar').addEventListener('click',perguntar);
+render();
+document.addEventListener('fx-disp',()=>render());
+const h0=location.hash.slice(1); if(h0==='fisica')escolher('f'); else if(h0==='online')escolher('o'); else perguntar();
+
+</script>
+</body>
 </html>
