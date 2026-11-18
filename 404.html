@@ -248,9 +248,6 @@ html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 110px)}
 
 /* códigos EAN e SKU */
 .codh{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap}
-.btn-csv{border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:8px;padding:11px 14px;font:800 13px/1 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase;letter-spacing:.4px;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
-.btn-csv:hover{border-color:var(--coral);color:var(--coral)}
-.btn-csv svg{width:16px;height:16px}
 .acc{background:var(--surface);border:1px solid var(--line);border-radius:10px;margin-top:8px;overflow:hidden}
 .acc summary{cursor:pointer;list-style:none;padding:13px 14px;display:flex;align-items:center;gap:10px;font:800 16px/1.1 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase}
 .acc summary::-webkit-details-marker{display:none}
@@ -319,7 +316,7 @@ tr.off td{color:var(--mut)}
     <section class="sec" id="acess"><div class="sh"><span class="kick">Para completar o pedido</span><h2>Acessórios</h2><p>Venda a partir de 10 unidades por item.</p></div><div class="agrid" id="agrid"></div></section>
     <section class="sec" id="codigos">
       <div class="codh"><div class="sh" style="margin:0"><span class="kick">Para cadastrar seus anúncios</span><h2>Códigos EAN e SKU</h2><p>Todas as bitolas de todas as linhas, inclusive as sem estoque. Toque numa linha para abrir.</p></div>
-      <button type="button" class="btn-csv" id="csv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Baixar planilha (CSV)</button></div>
+</div>
       <div id="codlist" style="margin-top:14px"></div>
     </section>
   </div>
@@ -459,13 +456,6 @@ function codigosTodos(){
     return `<details class="acc" data-l="${esc(l)}"${abertos.has(l)?' open':''}><summary>${esc(nomeLinha(l))}<small>${cs.length} códigos · ${on} em estoque</small></summary><div class="tw"><table class="cd"><thead><tr><th>Metr.</th><th>Bitola</th><th>lb</th><th>EAN</th><th>SKU</th><th>Estoque</th></tr></thead><tbody>${
       cs.map(c=>{const ok=situacao(c);return `<tr class="${ok?'':'off'}"><td>${c.m}</td><td>${bit(c.b)}</td><td>${c.lb||'—'}</td><td class="mono">${esc(c.ean)}</td><td class="mono">${esc(c.sku||'—')}</td><td><span class="st ${ok?'on':'off'}">${ok?'Sim':'Não'}</span></td></tr>`}).join('')}</tbody></table></div></details>`}).join('');
 }
-function baixarCSV(){
-  const L=window.FX_CAT.codigos||[], q=v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"';
-  const rows=[['Linha','Metragem','Bitola (mm)','Libras','EAN','SKU','Situação']].concat(L.map(c=>[nomeLinha(c.l),c.m,bit(c.b),c.lb||'',c.ean,c.sku||'',situacao(c)?'Em estoque':'Sem estoque']));
-  const blob=new Blob(['\ufeff'+rows.map(r=>r.map(q).join(';')).join('\r\n')],{type:'text/csv;charset=utf-8'});
-  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='fishermans-codigos-ean-sku.csv'; document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);
-}
-document.getElementById('csv').addEventListener('click',baixarCSV);
 // busca
 function norm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(',', '.')}
 function busca(){
