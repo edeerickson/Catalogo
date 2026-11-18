@@ -28,11 +28,11 @@
   <link rel="icon" href="favicon.ico?v=1" sizes="any" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=1" />
 <script src="fx-disponibilidade.js?v=2"></script>
-<script src="assets/v2/dados.js?v=2"></script>
+<script src="assets/v2/dados.js?v=c279b44e7b"></script>
 <script src="fx-disponibilidade.js?v=2"></script>
-<script src="assets/v2/dados.js?v=2"></script>
+<script src="assets/v2/dados.js?v=c279b44e7b"></script>
 <script src="fx-disponibilidade.js?v=2"></script>
-<script src="assets/v2/dados.js?v=2"></script>
+<script src="assets/v2/dados.js?v=c279b44e7b"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500;700;800;900&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
@@ -449,7 +449,7 @@ function render(){
 // códigos EAN e SKU de todas as bitolas
 function situacao(c){const i=ITEMS.find(x=>x.l===c.l&&x.m===c.m&&x.b===c.b);return !!(i&&ativo(i)&&preco(i))}
 function codigosTodos(){
-  const L=window.FX_CAT.codigos||[], g=new Map();
+  const L=(window.FX_CAT.codigos&&window.FX_CAT.codigos.length)?window.FX_CAT.codigos:ITEMS.filter(i=>i.ean&&i.b!=='unidade'), g=new Map();
   L.forEach(c=>{if(!g.has(c.l))g.set(c.l,[]);g.get(c.l).push(c)});
   const abertos=new Set([...document.querySelectorAll('#codlist details[open]')].map(d=>d.dataset.l));
   document.getElementById('codlist').innerHTML=[...g].map(([l,cs])=>{const on=cs.filter(situacao).length;
