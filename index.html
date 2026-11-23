@@ -261,6 +261,37 @@ tr.off td{color:var(--mut)}
 @media (max-width:440px){#codlist .cd th,#codlist .cd td{padding:6px 3px}#codlist .cd th:first-child,#codlist .cd td:first-child{padding-left:8px}#codlist .cd th{letter-spacing:0;font-size:10px}#codlist .cd{font-size:11px}#codlist .cd .mono{font-size:10px;letter-spacing:-.2px}#codlist .st{padding:3px 4px}}
 .toall{display:inline-block;margin-top:12px;font:700 13.5px/1 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase;color:var(--ink);text-decoration:underline;text-decoration-color:var(--coral);text-decoration-thickness:2px;text-underline-offset:4px}
 
+/* chamarizes */
+.proof{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:16px;padding:12px 14px;border:1px solid #3a3d55;border-radius:10px;font:700 13px/1.3 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase;letter-spacing:.3px;color:#e6e8ef}
+.proof em{font-style:normal;color:var(--coral)}
+.why{background:var(--surface);border-bottom:1px solid var(--line);padding:26px 0 22px}
+.why h2{font-size:clamp(28px,7vw,40px);font-weight:900;line-height:1;margin-top:6px}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+@media (min-width:760px){.nums{grid-template-columns:repeat(4,1fr)}}
+.num{background:var(--bg);border-radius:12px;padding:14px;border-top:4px solid var(--coral)}
+.num b{display:block;font:900 clamp(30px,8vw,40px)/1 "Roboto Condensed",Arial,sans-serif;letter-spacing:-.5px}
+.num b small{font-size:.55em;letter-spacing:0;margin-left:2px}
+.num span{display:block;font:800 13px/1.2 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase;margin-top:6px}
+.num p{margin:4px 0 0;font-size:12.5px;color:var(--mut);line-height:1.35}
+.num.star b{color:#d99a00}
+.blocos{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.prot{flex:1 1 300px;display:flex;gap:14px;align-items:center;background:var(--navy);color:#fff;border-radius:12px;padding:16px}
+.prot[hidden]{display:none}
+.prot.site{background:#24314f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .prot{background:#262a42;border:1px solid #33375a}:root:not([data-theme="light"]) .prot.site{background:#24314f;border-color:#2f4570}}
+:root[data-theme="dark"] .prot{background:#262a42;border:1px solid #33375a}:root[data-theme="dark"] .prot.site{background:#24314f;border-color:#2f4570}
+.prot svg{flex:0 0 40px;width:40px;height:40px;color:var(--coral)}
+.prot h3{font-size:19px;font-weight:900}
+.prot p{margin:3px 0 0;font-size:13.5px;color:#cfd2dc}
+.tec{display:flex;gap:12px;align-items:flex-start;margin-top:14px;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--coral);border-radius:10px;padding:13px 14px;max-width:620px}
+.tec svg{flex:0 0 30px;width:30px;height:30px;color:var(--coral)}
+.tec b{display:block;font:900 17px/1.1 "Roboto Condensed",Arial,sans-serif;text-transform:uppercase}
+.tec span{display:block;font-size:13.5px;color:var(--mut);margin-top:3px}
+.mv{font-weight:800;color:var(--ink)}
+.t td.m b.nm{font-weight:500}
+.mvleg{margin:0;padding:8px 12px 10px;font-size:12px;color:var(--mut);border-top:1px solid var(--line)}
+.mvleg b{color:var(--ink)}
+
 /* busca: resultados */
 #res .blk{margin-bottom:10px}
 .empty{color:var(--mut);padding:20px 4px}
@@ -278,6 +309,7 @@ tr.off td{color:var(--mut)}
     <button type="button" class="f" data-c="f"><b>Loja física</b><span>Vitrine e balcão. Compra, venda mínima e lucro.</span><em>Ver valores da loja física →</em></button>
     <button type="button" class="o" data-c="o"><b>Loja online</b><span>Site e marketplace. Compra, anúncio mínimo, lucro, SKU e EAN.</span><em>Ver valores da loja online →</em></button>
   </div>
+  <div class="proof"><span><em>+10 milhões</em> de acessos nas nossas redes</span><span><em>4,8★</em> em 14.873 avaliações</span><span><em>+150 mil</em> pescadores</span></div>
   <small>Você pode trocar de canal a qualquer momento pelo botão no topo.</small>
 </div></div>
 <header class="top"><div class="wrap">
@@ -297,6 +329,23 @@ tr.off td{color:var(--mut)}
     <div class="cond"><div><small>Pedido mínimo</small><b>R$ 2.500</b></div><div><small>Pagamento</small><b>Pix ou 3x sem juros</b></div><div><small>Produção</small><b>10 dias úteis</b></div></div>
   </div>
 </section>
+
+<section class="why"><div class="wrap">
+  <span class="kick">Por que revender Fishermans</span>
+  <h2>O pescador já procura a marca</h2>
+  <div class="nums">
+    <div class="num"><b>+10<small>MI</small></b><span>Acessos nas redes</span><p>Somando todas as nossas redes. Seu cliente chega conhecendo.</p></div>
+    <div class="num star"><b>4,8★</b><span>14.873 avaliações</span><p>Nota média dada por quem comprou e pescou.</p></div>
+    <div class="num"><b>+150<small>MIL</small></b><span>Pescadores</span><p>Já usam Fishermans no rio e no mar.</p></div>
+    <div class="num"><b>10<small>DIAS</small></b><span>Produção nacional</span><p>Do pedido à expedição, em dias úteis.</p></div>
+  </div>
+  <div class="blocos">
+    <div class="prot site" id="blkSite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+      <div><h3>Sua loja no nosso site</h3><p>Revendedores oficiais aparecem no mapa “Onde comprar” do fishermans.com.br. Quem descobre a marca nas redes encontra você.</p></div></div>
+    <div class="prot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg>
+      <div><h3>Preço protegido</h3><p>Toda a rede vende pelo preço mínimo ou acima. A loja do lado não derruba a sua margem.</p></div></div>
+  </div>
+</div></section>
 
 <div class="busca"><div class="wrap"><label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
   <input id="q" type="search" placeholder="Busque por bitola (0,30), libras (40), SKU ou EAN" aria-label="Buscar produto" autocomplete="off"></label></div></div>
@@ -367,10 +416,13 @@ function preco(i){
   if(i.oc==null||i.ov==null) return null; return {c:i.oc,v:i.ov,lu:i.ov-i.oc};
 }
 const doCanal=line=>ITEMS.filter(i=>i.l===line&&ativo(i)&&preco(i));
+// mais vendidas: curva A do guia comercial
+const MV_MULTI=['0.24','0.28','0.32','0.37'], MV_MONO={'Mono N40':['0.30','0.37','0.40'],'Mono S50':['0.30','0.33','0.37','0.40'],'Mono C97':['0.30','0.33','0.37','0.40']};
+function maisV(l,m,b){if(/ X[48]$/.test(l))return m==='150m'&&MV_MULTI.includes(b);return !!(MV_MONO[l]&&MV_MONO[l].includes(b))}
 function grupos(line,porBitola){
   const g=new Map();
   doCanal(line).forEach(i=>{const p=preco(i);const k=porBitola?i.b:[i.m,p.c,p.v].join('|');
-    if(!g.has(k))g.set(k,{m:i.m,bits:[],lb:i.lb,p});g.get(k).bits.push(i.b)});
+    if(!g.has(k))g.set(k,{l:line,m:i.m,bits:[],lb:i.lb,p});g.get(k).bits.push(i.b)});
   return [...g.values()];
 }
 function head(first){
@@ -381,8 +433,8 @@ function head(first){
 function linhaTab(g,mono,sub){
   const p=g.p, pct=Math.round(p.lu/p.c*100), n=4;
   const tag='';
-  const first=mono?`<b>${bit(g.bits[0])}${tag}</b>${g.lb?`<span>${g.lb} lb</span>`:''}`:`<b>${g.m}${tag}</b>`;
-  if(sub===undefined&&!mono&&g.bits.length) sub=g.bits.map(bit).join(' · ');
+  const first=mono?`<b${g.l&&MV_MONO[g.l]&&!maisV(g.l,g.m,g.bits[0])?' class="nm"':''}>${bit(g.bits[0])}${tag}</b>${g.lb?`<span>${g.lb} lb</span>`:''}`:`<b>${g.m}${tag}</b>`;
+  if(sub===undefined&&!mono&&g.bits.length) sub=g.bits.map(b=>g.l&&maisV(g.l,g.m,b)?`<span class="mv">${bit(b)}</span>`:bit(b)).join(' · ');
   const sr=sub?`<tr class="sub"><td colspan="${n}">${sub}</td></tr>`:'';
   if(p.conf) return `<tr class="${sub?'hs':''}"><td class="m">${first}</td><td class="r c">${brl(p.c)}</td><td class="rv" colspan="${n-2}"><b>Em revisão</b> · confirme os valores com seu vendedor</td></tr>${sr}`;
   const lu=`<td class="r lu"><b>${brl(p.lu)}</b><small>+${pct}%</small></td>`;
@@ -400,6 +452,7 @@ function bloco(line,cod,titulo,desc,img,mono,cor){
   return `<article class="blk${mono?' mb':''}" ${cor?`style="--mc:${cor}"`:''} id="l-${line.replace(/\W+/g,'')}">
     <div class="bh"><div class="pi"><img src="${IMG[img]}" alt="Embalagem ${esc(titulo)}"></div><div>${cod?`<span class="cod">${cod}</span>`:''}<h3>${esc(titulo)}</h3><p>${esc(desc)}</p></div></div>
     <div class="tw"><table class="t"><thead>${head(mono?'Bitola (mm)':'Metragem')}</thead><tbody>${gs.map(g=>linhaTab(g,mono)).join('')}</tbody></table></div>
+    ${gs.some(g=>g.bits.some(b=>maisV(line,g.m,b)))?'<p class="mvleg"><b>Em negrito:</b> as bitolas mais vendidas.</p>':''}
     ${codigos(line)}</article>`;
 }
 function notas(lines){
@@ -410,6 +463,7 @@ function notas(lines){
 function desde(line){const ps=doCanal(line).map(preco);if(!ps.length)return null;const ok=ps.filter(p=>!p.conf);return {c:Math.min(...ps.map(p=>p.c)),pct:Math.max(...ok.map(p=>Math.round(p.lu/p.c*100)))}}
 
 function render(){
+  const bs=document.getElementById('blkSite'); if(bs) bs.hidden=C!=='f';
   const tot=ITEMS.filter(i=>ativo(i)&&preco(i)).length;
   document.getElementById('tot').textContent=`${tot} itens à venda`;
   document.getElementById('visP').textContent=C==='f'?'Valores para vitrine e balcão, com o lucro na venda mínima da loja física.':'Valores para o canal digital, com o lucro no anúncio mínimo.';
@@ -425,7 +479,7 @@ function render(){
   const card=cs=>cs.map(([l,fam,cod,img,qt,d])=>`<a class="rc" href="#l-${l.replace(/\W+/g,'')}"><div class="pi"><img src="${IMG[img]}" alt=""></div><div class="rn"><span>${fam}</span><b>${cod}</b><small>${qt}</small></div><div class="rp"><small>Compra desde</small><b>${brl(d.c)}</b><span class="lu-tag">lucro até +${d.pct}%</span></div></a>`).join('');
   document.getElementById('rgrid').innerHTML=card(cards); document.getElementById('rgrid2').innerHTML=card(cards2);
   // famílias
-  let h=`<div class="div" id="multi"><div><span class="kick">Trançados de PE · 4, 8 e 16 fios</span><h2>Multifilamentos</h2><p>Amazônica e Oceânica camufladas, em 4X e 8X, e a Marfim 16X de alta performance.</p></div><span class="n">${['Amazônica X4','Amazônica X8','Oceânica X4','Oceânica X8','Marfim X16'].reduce((a,l)=>a+doCanal(l).length,0)} itens</span></div>`;
+  let h=`<div class="div" id="multi"><div><span class="kick">Trançados de PE · 4, 8 e 16 fios</span><h2>Multifilamentos</h2><p>Amazônica e Oceânica camufladas, em 4X e 8X, e a Marfim 16X de alta performance.</p><div class="tec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4c4 4 12 4 16 0M4 10c4 4 12 4 16 0M4 16c4 4 12 4 16 0"/></svg><div><b>Trançado estilo japonês</b><span>Todas as nossas multifilamento usam tecnologia de trançado estilo japonês: Amazônica, Oceânica e Marfim.</span></div></div></div><span class="n">${['Amazônica X4','Amazônica X8','Oceânica X4','Oceânica X8','Marfim X16'].reduce((a,l)=>a+doCanal(l).length,0)} itens</span></div>`;
   FAM.forEach(f=>{const bl=f.linhas.map(([l,cod,desc,img])=>bloco(l,cod,`${f.nome.replace(' 16X','')} ${cod}`,desc,img)).filter(Boolean);
     if(!bl.length)return;
     h+=`<section class="sec" id="f-${f.id}"><div class="fh" style="--fc:${FCOR[f.id]}"><div class="ft"><span class="kick">${f.sub}</span><h2>${f.nome}</h2><p>${f.desc}</p></div><div class="packs">${f.linhas.map(x=>`<span><img src="${IMG[x[3]]}" alt=""></span>`).join('')}</div></div>
