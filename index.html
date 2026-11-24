@@ -28,11 +28,11 @@
   <link rel="icon" href="favicon.ico?v=1" sizes="any" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=1" />
 <script src="fx-disponibilidade.js?v=2"></script>
-<script src="assets/v2/dados.js?v=9f748ef850"></script>
+<script src="assets/v2/dados.js?v=40273fa721"></script>
 <script src="fx-disponibilidade.js?v=2"></script>
-<script src="assets/v2/dados.js?v=9f748ef850"></script>
+<script src="assets/v2/dados.js?v=40273fa721"></script>
 <script src="fx-disponibilidade.js?v=2"></script>
-<script src="assets/v2/dados.js?v=9f748ef850"></script>
+<script src="assets/v2/dados.js?v=40273fa721"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500;700;800;900&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
@@ -362,7 +362,7 @@ tr.off td{color:var(--mut)}
       <div class="leg" id="leg"></div>
     </section>
     <div id="fams"></div>
-    <section class="sec" id="acess"><div class="sh"><span class="kick">Para completar o pedido</span><h2>Acessórios</h2><p>Venda a partir de 10 unidades por item.</p></div><div class="agrid" id="agrid"></div></section>
+    <section class="sec" id="acess"><div class="sh"><span class="kick">Para completar o pedido</span><h2>Acessórios</h2><p>Copo e Alicate: venda a partir de 10 unidades.</p></div><div class="agrid" id="agrid"></div></section>
     <section class="sec" id="codigos">
       <div class="codh"><div class="sh" style="margin:0"><span class="kick">Para cadastrar seus anúncios</span><h2>Códigos EAN e SKU</h2><p>Todas as bitolas de todas as linhas, inclusive as sem estoque. Toque numa linha para abrir.</p></div>
 </div>
@@ -386,9 +386,9 @@ tr.off td{color:var(--mut)}
 <footer class="foot"><div class="wrap"><img src="assets/v2/logo-branco.png" alt="Fishermans"><span>Feita por pescador. Testada no rio.</span><span>fishermans.com.br</span></div></footer>
 
 <script>
-const ITEMS=window.FX_CAT.itens, PADRAO=new Set(window.FX_CAT.padrao), IMG={"amazonica-4x": "assets/v2/amazonica-4x.jpg", "amazonica-8x": "assets/v2/amazonica-8x.jpg", "oceanica-4x": "assets/v2/oceanica-4x.jpg", "oceanica-8x": "assets/v2/oceanica-8x.jpg", "marfim-16x": "assets/v2/marfim-16x.jpg", "n40": "assets/v2/n40.jpg", "s50": "assets/v2/s50.jpg", "c97": "assets/v2/c97.jpg", "n90": "assets/v2/n90.jpg", "w98": "assets/v2/w98.jpg", "copo": "assets/v2/copo.jpg", "alicate": "assets/v2/alicate.jpg"};
+const ITEMS=window.FX_CAT.itens, PADRAO=new Set(window.FX_CAT.padrao), IMG={"bone": "assets/v2/bone.jpg", "amazonica-4x": "assets/v2/amazonica-4x.jpg", "amazonica-8x": "assets/v2/amazonica-8x.jpg", "oceanica-4x": "assets/v2/oceanica-4x.jpg", "oceanica-8x": "assets/v2/oceanica-8x.jpg", "marfim-16x": "assets/v2/marfim-16x.jpg", "n40": "assets/v2/n40.jpg", "s50": "assets/v2/s50.jpg", "c97": "assets/v2/c97.jpg", "n90": "assets/v2/n90.jpg", "w98": "assets/v2/w98.jpg", "copo": "assets/v2/copo.jpg", "alicate": "assets/v2/alicate.jpg"};
 // disponibilidade: o que o Painel do atacado decidiu; se ele nunca decidiu, vale a lista padrão
-function ativo(i){const F=window.FXDisp;let e=null;if(F&&F.carregado&&F.carregado()){e=F.estado(i.sku);if(e===null&&i.skuCat&&i.skuCat!==i.sku)e=F.estado(i.skuCat)}
+function ativo(i){if(i.l==='Boné Fishermans'){const F=window.FXDisp;return !!(F&&F.carregado&&F.carregado()&&F.familiaDisponivel('bone'))}const F=window.FXDisp;let e=null;if(F&&F.carregado&&F.carregado()){e=F.estado(i.sku);if(e===null&&i.skuCat&&i.skuCat!==i.sku)e=F.estado(i.skuCat)}
   return e===null?PADRAO.has(i.skuCat+'|'+i.m+'|'+i.l):e}
 const alicateOk=()=>{const F=window.FXDisp;return !F||F.familiaDisponivel('alicate')};
 const FCOR={ama:'#c8742b',oce:'#2a8fd6',mar:'#d9d4c4'};
@@ -493,7 +493,10 @@ function render(){
     <div class="tw"><table class="t"><thead>${head('Quantidade')}</thead><tbody>${cp.map(i=>linhaTab({m:i.m,bits:[],p:preco(i)},false,'')).join('')}</tbody></table></div></article>`:'';
   const ali=`<article class="blk"><div class="ai"><img src="${IMG.alicate}" alt="Alicate Fishermans"></div><div class="bh"><div><span class="cod">Inox · multifuncional</span><h3>Alicate Fishermans</h3><p>Corta multi e monofilamento, abre argolas e remove anzóis com uma mão só.</p></div></div>
     <div class="tw"><table class="t"><thead><tr><th>Quantidade</th><th class="r">Compra</th><th class="r">Venda</th></tr></thead><tbody><tr><td class="m"><b>10 un</b></td><td class="r c">R$ 59,90</td><td class="rv">Preço de venda com seu vendedor</td></tr></tbody></table></div></article>`;
-  document.getElementById('agrid').innerHTML=copo+(alicateOk()?ali:'');
+  const bn=ITEMS.filter(i=>i.l==='Boné Fishermans'&&ativo(i)&&preco(i));
+  const bone=bn.length?`<article class="blk"><div class="ai"><img src="${IMG.bone}" alt="Boné de Pesca Trucker Fishermans"></div><div class="bh"><div><span class="cod">Trucker · ajustável</span><h3>Boné Fishermans</h3><p>Leve, resistente e ventilado, com aba curva e proteção solar. Para a pescaria e o dia a dia.</p></div></div>
+    <div class="tw"><table class="t"><thead>${head('Quantidade')}</thead><tbody>${bn.map(i=>linhaTab({m:'Unidade',bits:[],p:preco(i)},false,'')).join('')}</tbody></table></div></article>`:'';
+  document.getElementById('agrid').innerHTML=copo+(alicateOk()?ali:'')+bone;
   document.getElementById('p4').textContent=C==='f'?'Produção e expedição em 10 dias úteis, direto para a sua loja.':'Produção e expedição em 10 dias úteis. Cadastre os anúncios com os códigos SKU e EAN de cada linha.';
   document.getElementById('polH').textContent=C==='f'?'Venda mínima':'Anúncio mínimo';
   document.getElementById('polP').textContent=C==='f'?'Os valores de venda mínima protegem a sua margem e a de toda a rede de lojistas. Não venda abaixo deles.':'O anúncio não pode ficar abaixo do anúncio mínimo de cada item. Isso protege a sua margem e a de toda a rede de lojistas. O termo de compromisso é enviado pelo seu vendedor.';
