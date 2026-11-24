@@ -388,7 +388,7 @@ tr.off td{color:var(--mut)}
 <script>
 const ITEMS=window.FX_CAT.itens, PADRAO=new Set(window.FX_CAT.padrao), IMG={"bone": "assets/v2/bone.jpg", "amazonica-4x": "assets/v2/amazonica-4x.jpg", "amazonica-8x": "assets/v2/amazonica-8x.jpg", "oceanica-4x": "assets/v2/oceanica-4x.jpg", "oceanica-8x": "assets/v2/oceanica-8x.jpg", "marfim-16x": "assets/v2/marfim-16x.jpg", "n40": "assets/v2/n40.jpg", "s50": "assets/v2/s50.jpg", "c97": "assets/v2/c97.jpg", "n90": "assets/v2/n90.jpg", "w98": "assets/v2/w98.jpg", "copo": "assets/v2/copo.jpg", "alicate": "assets/v2/alicate.jpg"};
 // disponibilidade: o que o Painel do atacado decidiu; se ele nunca decidiu, vale a lista padrão
-function ativo(i){if(i.l==='Boné Fishermans'){const F=window.FXDisp;return !!(F&&F.carregado&&F.carregado()&&F.familiaDisponivel('bone'))}const F=window.FXDisp;let e=null;if(F&&F.carregado&&F.carregado()){e=F.estado(i.sku);if(e===null&&i.skuCat&&i.skuCat!==i.sku)e=F.estado(i.skuCat)}
+function ativo(i){if(i.l==='Boné Fishermans')return true; /* boné: em estoque, confirmado pelo Ede (o Painel do atacado ainda marca como indisponível) */const F=window.FXDisp;let e=null;if(F&&F.carregado&&F.carregado()){e=F.estado(i.sku);if(e===null&&i.skuCat&&i.skuCat!==i.sku)e=F.estado(i.skuCat)}
   return e===null?PADRAO.has(i.skuCat+'|'+i.m+'|'+i.l):e}
 const alicateOk=()=>{const F=window.FXDisp;return !F||F.familiaDisponivel('alicate')};
 const FCOR={ama:'#c8742b',oce:'#2a8fd6',mar:'#d9d4c4'};
